@@ -10,4 +10,12 @@ class MainController extends Controller
     {
         return view('main');
     }
+    public function register()
+    {
+        return view('register');
+    }
+    public function login()
+    {
+        return view('login');
+    }
 }
