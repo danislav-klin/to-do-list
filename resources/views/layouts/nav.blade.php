@@ -7,10 +7,28 @@
       </div>
 
       
+      @guest
+          <div class="col-md-3 text-end">
+          <a href="{{ route('login') }}" type="button" class="btn btn-outline-primary me-2">Login</a>
+          <a href="{{ route('register') }}" type="button" class="btn btn-primary">Sign-up</a>
+        </div>
+      @endguest
 
+      @auth
+      <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link">{{ Auth::user()->login }}</a>
+        </li>
+      </ul>
       <div class="col-md-3 text-end">
-        <a href="{{ route('login') }}" type="button" class="btn btn-outline-primary me-2">Login</a>
-        <a href="{{ route('register') }}" type="button" class="btn btn-primary">Sign-up</a>
+        <form action="{{ route('logout') }}" method="POST">
+          @csrf
+          <button type="submit" class="btn btn-outline-primary me-2">Log out</button>
+        </form>
+        
+        
       </div>
+      @endauth
+      
     </header>
   </div>
