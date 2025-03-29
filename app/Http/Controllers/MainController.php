@@ -25,7 +25,7 @@ class MainController extends Controller
     }
     public function user_room()
     {
-        $lists = Task::get()->orderby();
+        $lists = Task::orderby('id', 'desc')->get();
         return view('user.main', ['lists' => $lists]);
     }
 
