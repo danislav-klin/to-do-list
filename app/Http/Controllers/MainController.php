@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -24,7 +25,8 @@ class MainController extends Controller
     }
     public function user_room()
     {
-        return view('user.main');
+        $lists = Task::get()->orderby();
+        return view('user.main', ['lists' => $lists]);
     }
 
     public function to_register(Request $request): RedirectResponse
@@ -79,4 +81,6 @@ class MainController extends Controller
 
         return redirect('/');
     }
+
+    
 }
